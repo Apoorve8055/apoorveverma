@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import "./page.css";
 
 export default function Home() {
   const [timeLeft, setTimeLeft] = useState("");
@@ -33,69 +34,21 @@ export default function Home() {
   }, []);
 
   return (
-    <div style={styles.body}>
-      <div style={styles.container}>
+    <div>
+      <div className="container">
         <Image
           src="https://lh3.googleusercontent.com/a/ACg8ocImueCMI_2v4CG14nHE1fqpnT1snuxUvWnGH_7DK-jnnKQ5ek0T"
           alt="Logo"
           width={100}
           height={100}
-          style={{ borderRadius: "50%", marginBottom: "1.5rem" }}
+          className="logo"
         />
         <h1 className="pulse">Coming Soon</h1>
-        <p style={styles.paragraph}>
+        <p className="paragraph">
           Something amazing is on the way. Stay tuned!
         </p>
-        <div style={styles.countdown}>{timeLeft}</div>
-
-        <style jsx>{`
-          @keyframes pulse {
-            0%,
-            100% {
-              opacity: 1;
-              transform: scale(1);
-            }
-            50% {
-              opacity: 0.7;
-              transform: scale(1.05);
-            }
-          }
-          .pulse {
-            font-size: 4rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            animation: pulse 3s ease-in-out infinite;
-          }
-        `}</style>
+        <div className="countdown">{timeLeft}</div>
       </div>
     </div>
   );
 }
-
-const styles = {
-  body: {
-    fontFamily: "Roboto, sans-serif",
-    height: "100vh",
-    margin: 0,
-    padding: 0,
-    background: "linear-gradient(135deg, #8e2de2, #4a00e0)",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    color: "white",
-  },
-  container: {
-    padding: "2rem",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-  },
-  paragraph: {
-    fontSize: "1.2rem",
-    marginBottom: "2rem",
-  },
-  countdown: {
-    fontSize: "2rem",
-    fontWeight: 300,
-  },
-};
